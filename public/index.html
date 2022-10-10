@@ -29,44 +29,41 @@
     <div id="root">
       <header class="header">
         <section class="top-bar">
-          <div class="top-bar__left-side">
-            <div class="top-bar__music-player">
-              <img class="top-bar__music-player-img" src="%PUBLIC_URL%/img/player-album.png">
-              <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/prev-button.png" alt=""></button>
-              <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/play-button.png" alt=""></button>
-              <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/next-button.png" alt="" ></button>
-              <button type="button" class="top-bar__music-player-button top-bar__love-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/heart-white.png" alt="" ></button>
-            </div>
-            <div class="top-bar__logo"><a href="#">Last.fm</a></div>
+
+          <div class="top-bar__music-player flex-block">
+            <img class="top-bar__music-player-img" src="%PUBLIC_URL%/img/player-album.png">
+            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/prev-button.png" alt=""></button>
+            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/play-button.png" alt=""></button>
+            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/next-button.png" alt="" ></button>
+            <button type="button" class="top-bar__music-player-button top-bar__love-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/heart-white.png" alt="" ></button>
           </div>
-          <div class="top-bar__right-side">
-            <div class="top-bar__controlls">
-              <a href="#"><img class="search-button-img" src="%PUBLIC_URL%/img/search.png"></a>
-              <nav class="top-bar__nav">
-                <ul class="top-bar__nav-items">
-                  <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Home</a></li>
-                  <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Live</a></li>
-                  <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Music</a></li>
-                  <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Charts</a></li>
-                  <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Events</a></li>
-                  <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Features</a></li>
-                </ul>
-              </nav>
-              
-              <a href="#"><img class="top-bar__icon" src="%PUBLIC_URL%/img/user.png"> </a>
-            </div>
+
+          <div class="top-bar__logo"><a href="#" class="top-bar__logo-link">Last.fm</a></div>
+
+          <div class="top-bar__controlls flex-block">
+            <a href="#"><img class="search-button-img" src="%PUBLIC_URL%/img/search.png"></a>
+            <nav class="top-bar__nav">
+              <ul class="top-bar__nav-items flex-block">
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Home</a></li>
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Live</a></li>
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Music</a></li>
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Charts</a></li>
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Events</a></li>
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Features</a></li>
+              </ul>
+            </nav>
+            
+            <a href="#"><img class="top-bar__icon" src="%PUBLIC_URL%/img/user.png"> </a>
           </div>
         </section>
       </header>
-      
 
-
-
-      <main class="content">
-          <div class="header-content">
+      <!--main block for content-->
+      <main>
+          <!--Block for header content-->
+          <div>
             <div class="container">
               <h1 class="text-black page-header">Music</h1>
-
             </div>
           </div>
           <div class="page-content">
@@ -158,7 +155,6 @@
                 </div>
               </section>
 
-
               <section class="content-section">
                 <h3 class="text-black content-section__header">Popular tracks</h3>
                 <div class="content-section__items">
@@ -174,7 +170,6 @@
                       </ul>
                     </div>
                   </div>
-                  
                   <div class="small-card">
                     <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
                     <div class="small-card__info">
@@ -237,7 +232,6 @@
                   </div>
                   <div class="small-card">
                     <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    
                     <div class="small-card__info">
                       <a href="#" class="text-black small-card__song-name">Song name</a>
                       <a href="#" class="text-black small-card__author">Kanye West</a>
@@ -257,7 +251,7 @@
           <div class="header-content search-header-content">
             <div class="container">
               <h2 class="text-black search-header">Search results for "something"</h2>
-              <div class="search-categories">
+              <div class="search-categories flex-block">
                 <a href="#" class="text-black active-search-category">Top results</a>
                 <a href="#" class="text-black non-active-search-category">Artists</a>
                 <a href="#" class="text-black non-active-search-category">Albums</a>
@@ -275,7 +269,6 @@
                 </div>
   
                 <section class="search-content-section">
-                  
                   <h2 class="text-black search-content-section__header">Artists</h2>
                   <div class="content-section__items">
                     <div class="image-card">
@@ -425,76 +418,76 @@
                   
                   <h2 class="text-black search-content-section__header">Tracks</h2>
                   <div>
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
                     
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
   
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
   
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
   
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
   
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
   
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
   
-                    <div class="line-music-card">
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/play-button-black.png"> </button>
+                    <div class="line-music-card flex-block">
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
                       <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img src="%PUBLIC_URL%/img/heart.png"> </button>
+                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
                       <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
                       <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black">3:33</p></div>
+                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
                     </div>
                   </div>
                   <div>
@@ -504,23 +497,20 @@
   
               </div>
               <div class="search-right-column">
-                <p class="text-black">Dont't want to see ads?</p>
-                <a href="#" class="text-black">Upgrade Now</a>
+                <p class="text-black search-right-column-text">Dont't want to see ads?</p>
+                <a href="#" class="text-black search-right-column-text search-right-column-link">Upgrade Now</a>
               </div>
             </div>
           </div>
 
       </main>
 
-
-
-
       <footer class="footer">
         <div class="footer-content">
           <div class="container">
             <div class="footer-top">
-              
-                <div class="footer-top__content">
+                <!--content of footer-->
+                <div class="flex-block">
 
                   <div class="footer-top__column">
                     <p class="text-light footer-top__column-header">COMPANY</p>
@@ -583,8 +573,9 @@
                 </div>
               
             </div>
-            <div class="footer-bottom">   
-                <div class="footer-bottom__content">
+            <div class="footer-bottom">  
+              <!--content of footer--> 
+                <div class="flex-block">
                   <div class="footer-bottom__left-column">
                     <ul class="language-selector">
                       <li class="language-selector-item"><button type="button" class="text-light language-button">English</button></li>
