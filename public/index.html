@@ -23,39 +23,50 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src="createNodes.js" defer></script>
+    <script src="load_hot.js" defer></script>
+    <script src="header_search.js" defer></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
+      
       <header class="header">
+        
         <section class="top-bar">
 
           <div class="top-bar__music-player flex-block">
-            <img class="top-bar__music-player-img" src="%PUBLIC_URL%/img/player-album.png">
-            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/prev-button.png" alt=""></button>
-            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/play-button.png" alt=""></button>
-            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/next-button.png" alt="" ></button>
-            <button type="button" class="top-bar__music-player-button top-bar__love-button"><img class="top-bar__music-player-button-img" src="%PUBLIC_URL%/img/heart-white.png" alt="" ></button>
+            <img class="top-bar__music-player-img" src="https://www.last.fm/static/images/defaults/player_default_album.430223706b14.png">
+            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="img/prev-button.png" alt=""></button>
+            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="img/play-button.png" alt=""></button>
+            <button type="button" class="top-bar__music-player-button"><img class="top-bar__music-player-button-img" src="img/next-button.png" alt="" ></button>
+            <button type="button" class="top-bar__music-player-button top-bar__love-button"><img class="top-bar__music-player-button-img" src="img/heart-white.png" alt="" ></button>
           </div>
 
-          <div class="top-bar__logo"><a href="#" class="top-bar__logo-link">Last.fm</a></div>
+          <div class="top-bar__logo"><a href="index.html" class="top-bar__logo-link">Last.fm</a></div>
 
           <div class="top-bar__controlls flex-block">
-            <a href="#"><img class="search-button-img" src="%PUBLIC_URL%/img/search.png"></a>
+            <button type="button" class="top-bar__header-start-search-button"><img class="search-button-img" src="https://www.last.fm/static/images/icons/search_16.bde37072495a.png"></button>
             <nav class="top-bar__nav">
               <ul class="top-bar__nav-items flex-block">
                 <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Home</a></li>
                 <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Live</a></li>
-                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Music</a></li>
+                <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="index.html">Music</a></li>
                 <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Charts</a></li>
                 <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Events</a></li>
                 <li class="top-bar__nav-item"><a class="text-light top-bar__nav-link" href="#">Features</a></li>
               </ul>
             </nav>
             
-            <a href="#"><img class="top-bar__icon" src="%PUBLIC_URL%/img/user.png"> </a>
+            <a href="#"><img class="top-bar__icon" src="https://lastfm.freetls.fastly.net/i/u/avatar42s/818148bf682d429dc215c1705eb27b98.png"> </a>
           </div>
         </section>
+        <section class="header-search-field hidden">
+          <input type="text" class="text-black header-search-input" placeholder="Input search">
+          <button type="button" class="search-button header-cross"> <img class="search-button-img" src="https://www.last.fm/static/images/icons/clear_field_16.4768b21c62e1.png"> </button>
+          <button type="button" class="search-button header-search-lens"> <img class="search-button-img" src="https://www.last.fm/static/images/icons/search_16.bde37072495a.png"> </button>
+        </section>
+
       </header>
 
       <!--main block for content-->
@@ -70,438 +81,19 @@
             <div class="container">
               <section class="content-section">
                 <h3 class="text-black content-section__header">Hot right now</h3>
-                <div class="content-section__items">
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/725cbf01f1b2b49bf17b3cb6e956283b.jpg"> </a>
-                    
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-                  
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
-
-                  <div class="big-card">
-                    <a href="#"> <img class="big-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/6fc92e61b092cc480a4822527a61b683.jpg"> </a>
-                    <a class="text-black big-card__author" href="#">Kanye West</a>
-                    <ul class="card-genre">
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                      <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                    </ul>
-                  </div>
+                <div class="content-section__items hot-list">
                 </div>
               </section>
 
               <section class="content-section">
                 <h3 class="text-black content-section__header">Popular tracks</h3>
-                <div class="content-section__items">
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div class="small-card">
-                    <a href="#"> <img class="small-card__image" src="https://lastfm.freetls.fastly.net/i/u/300x300/8b40692a1133af4047cebebc2e67280b.jpg"> </a>
-                    <div class="small-card__info">
-                      <a href="#" class="text-black small-card__song-name">Song name</a>
-                      <a href="#" class="text-black small-card__author">Kanye West</a>
-                      <ul class="card-genre">
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip-hop</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">rap</a></li>
-                        <li class="text-black card-genre-item"><a href="#" class="text-black card-genre-item-link">hip hop</a></li>
-                      </ul>
-                    </div>
-                  </div>
-
+                <div class="content-section__items popular-tracks-list">
                 </div>
               </section>
             </div>
           </div>
 
-          <div class="header-content search-header-content">
-            <div class="container">
-              <h2 class="text-black search-header">Search results for "something"</h2>
-              <div class="search-categories flex-block">
-                <a href="#" class="text-black active-search-category">Top results</a>
-                <a href="#" class="text-black non-active-search-category">Artists</a>
-                <a href="#" class="text-black non-active-search-category">Albums</a>
-                <a href="#" class="text-black non-active-search-category">Tracks</a>
-              </div>
-            </div>
-          </div>
-          <div class="page-content">
-            <div class="container search-content">
-              <div class="search-left-column">
-                <div class="search-field">
-                  <input type="text" class="text-black search-input">
-                  <button type="button" class="search-button"> <img class="search-button-img" src="%PUBLIC_URL%/img/cross.png"> </button>
-                  <button type="button" class="search-button"> <img class="search-button-img" src="%PUBLIC_URL%/img/search-black.png"> </button>
-                </div>
-  
-                <section class="search-content-section">
-                  <h2 class="text-black search-content-section__header">Artists</h2>
-                  <div class="content-section__items">
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-                    
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <a href="#" class="text-black search-content-section__see-more-link">More artists ></a>
-                  </div>
-                </section>
-  
-                <section class="search-content-section">
-                  
-                  <h2 class="text-black search-content-section__header">Albums</h2>
-                  <div class="content-section__items">
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-                    
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-  
-                    <div class="image-card">
-                      <img class="image-card-img" src="%PUBLIC_URL%/img/album-cover.png">
-                      <div class="card-details">
-                        <a href="#" class="text-light image-card-info-name">Never Gonna Give You Up (8 Bit Remix Cover Version) [Tribute to Rick Astley] </a>
-                        <p class="text-light image-card-info-listeners">11,111 listeners</p>
-                      </div>
-                    </div>
-                  </div>
-                  <div>
-                    <a href="#" class="text-black search-content-section__see-more-link">More albums ></a>
-                  </div>
-                </section>
-  
-  
-                <section class="search-content-section">
-                  
-                  <h2 class="text-black search-content-section__header">Tracks</h2>
-                  <div>
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-                    
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-  
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-  
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-  
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-  
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-  
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-  
-                    <div class="line-music-card flex-block">
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/play-button-black.png"> </button>
-                      <a href="#"><img class="line-music-card__img" src="%PUBLIC_URL%/img/album-cover-bts.png" alt=""></a>
-                      <button class="line-music-card__button"> <img class="line-music-card__button-img" src="%PUBLIC_URL%/img/heart.png"> </button>
-                      <div class="line-music-card__track-name"><a href="#" class="text-black line-music-card__track-name-link">West Kanye</a></div>
-                      <div class="line-music-card__track-author"><a href="#" class="text-black line-music-card__track-author-link">Kanye West</a></div>
-                      <div class="line-music-card-track-time"><p class="text-black line-music-card-track-time-text">3:33</p></div>
-                    </div>
-                  </div>
-                  <div>
-                    <a href="#" class="text-black search-content-section__see-more-link">More tracks ></a>
-                  </div>
-                </section>
-  
-              </div>
-              <div class="search-right-column">
-                <p class="text-black search-right-column-text">Dont't want to see ads?</p>
-                <a href="#" class="text-black search-right-column-text search-right-column-link">Upgrade Now</a>
-              </div>
-            </div>
-          </div>
+          
 
       </main>
 
@@ -613,7 +205,7 @@
                   </div>
                   <div class="footer-bottom__right-column">
                     <p class="text-light footer-bottom__right-column-text">Audioscrobbler</p>
-                    <img class="footer-logo" src="%PUBLIC_URL%/img/footer_logo.png">
+                    <img class="footer-logo" src="https://www.last.fm/static/images/footer_logo@2x.49ca51948b0a.png">
                   </div>
                 </div>
             </div>
