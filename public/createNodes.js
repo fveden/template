@@ -113,10 +113,11 @@ function create_link(text, url, ...classes){
 function create_genre_list_child(text, url){
     let list_child = document.createElement("li");
     list_child.classList.add("text-black", "card-genre-item");
-    let list_child_link = document.createElement("a");
-    list_child_link.classList.add("text-black", "card-genre-item-link");
-    list_child_link.href = url;
-    list_child_link.textContent = text;
+    
+    let list_child_link = create_link(text, url, "text-black", "card-genre-item-link");
+    // list_child_link.classList.add("text-black", "card-genre-item-link");
+    // list_child_link.href = url;
+    // list_child_link.textContent = text;
     list_child.appendChild(list_child_link);
     return list_child;
 }
@@ -159,7 +160,6 @@ function create_search_content_section(title_text){
  * @returns {string} Шаблон
  */
 function create_image_artist_card(artist_name, listeners_amount, artist_url, img_url){
-    if(img_url === "") {img_url = "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.jpg"}
     let template = `<div class="image-card">
     <img class="image-card-img" src=${img_url}>
     <div class="card-details">
@@ -179,7 +179,6 @@ function create_image_artist_card(artist_name, listeners_amount, artist_url, img
  * @returns {string} Шаблон
  */
 function create_image_album_card(album_name, album_url, artist_name, artist_url, img_url){
-    if(img_url === "") {img_url = "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.jpg"}
     let template = `<div class="image-card">
     <img class="image-card-img" src=${img_url}>
     <div class="card-details">
@@ -199,7 +198,6 @@ function create_image_album_card(album_name, album_url, artist_name, artist_url,
  * @returns {string} Шаблон
  */
 function create_line_music_card(track_name, track_url, author_name, author_url, img_url){
-    if(img_url === "") {img_url = "https://lastfm.freetls.fastly.net/i/u/64s/4128a6eb29f94943c9d206c08e625904.jpg"}
     let template = `<div class="line-music-card flex-block">
     <button class="line-music-card__button"> <img class="line-music-card__button-img" src="https://www.last.fm/static/images/icons/play_dark_16.e469e7d1482a.png"> </button>
     <a href=${track_url}><img class="line-music-card__img" src=${img_url} alt=""></a>

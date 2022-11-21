@@ -8,7 +8,7 @@ const search_input_cross = document.querySelector(".cross") //Кнопка оч�
 const search_result_area = document.querySelector(".search-left-column") //Левая колонка для отображения информации о поиске
 const search_result_header = document.querySelector(".search-header") //Заголовок для поля отображения поискового результата
 
-api_key = sessionStorage.getItem("api_key"); //Устанавливаем апи ключ
+ const search_api_key = sessionStorage.getItem("api_key"); //Устанавливаем апи ключ
 let categorie_type = "Top results"; //Категория поискового запроса
 search_text = sessionStorage.getItem("search_text"); //Устанавливаем текст поискового запроса
 
@@ -19,10 +19,10 @@ let data_tracks //Найденные треки
 /**
  * Входная функция для сбора всей необходимой информации и ее отображения
  */
-async function main(){
+async function start(){
     if(search_text != ""){
         await fetch_all_data();
-        await show_top_result();
+        show_search_result  ();
         if(data_artists.results.artistmatches.artist.length === 0
             && data_albums.results.albummatches.album.length === 0
             && data_tracks.results.trackmatches.track.length === 0
@@ -37,26 +37,23 @@ async function main(){
     
 }
 
-main();
+start();
 
 /**
  * Отслеживание нажатия Enter при вводе поиска
  */
 search_input.addEventListener("keydown", (key) => {
-    if(key.keyCode === 13){
+    if(key.code === "Enter"){
         search_text = search_input.value;
-        search_result_header.textContent = `Search results for \"${search_text}\"`;
-        main();
+        start();
     }
 });
 /**
  * Отслеживание нажатия на лупу при поиске
  */
 search_input_button.addEventListener("click", () => {
-    if(search_input.value != ""){
         search_text = search_input.value;
-        main();
-    }
+        start();
 })
 /**
  * Отслеживание нажатия на крестик в строке поиска
@@ -94,21 +91,19 @@ function turn_off_active_category(){
  * Функция отображения секции результата поиска в зависимоси от выбранной категории
  */
 function show_search_result(){
+    clear_search_result_area();
     switch(categorie_type)
     {
         case "Top results":
             show_top_result();
             break;
         case "Artists":
-            clear_search_result_area();
             show_artists_result();
             break;
         case "Albums":
-            clear_search_result_area();
             show_albums_result();
             break;
         case "Tracks":
-            clear_search_result_area();
             show_tracks_result();
             break;
     }
@@ -116,13 +111,12 @@ function show_search_result(){
 /**
  * Отображение всех категорий
  */
-async function show_top_result(){
+function show_top_result(){
     search_result_header.textContent = `Search results for \"${search_text}\"`;
     search_input.value = search_text;
-    clear_search_result_area();
-    await show_artists_result();
-    await show_albums_result();
-    await show_tracks_result();
+    show_artists_result();
+    show_albums_result();
+    show_tracks_result();
 }
 /**
  * Отображение результатов по категории артистов
@@ -135,7 +129,7 @@ async function show_artists_result(){
                             el.name,
                             el.listeners,
                             el.url,
-                            el.image[3]["#text"]
+                            el.image[3]["#text"] === "" ? undefined : el.image[3]["#text"]
         )
     })
 }
@@ -152,7 +146,7 @@ async function show_albums_result(){
                             el.url,
                             el.artist,
                             artist_url,
-                            el.image[3]["#text"]
+                            el.image[3]["#text"] === "" ? undefined : el.image[3]["#text"]
         );
         
     })
@@ -171,7 +165,7 @@ async function show_tracks_result(){
                             el.url,
                             el.artist,
                             artist_url,
-                            el.image[1]["#text"]
+                            el.image[1]["#text"] === "" ? undefined : el.image[1]["#text"]
         );
         
     })
@@ -195,8 +189,13 @@ async function fetch_all_data(){
 async function fetch_artists_result(){
     /*Ссылки на изображения приходящие по запросу по какой то причине указывают на серое изображение */
     const artists_amount = 7;
-    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${search_text}&api_key=${api_key}&limit=${artists_amount}&format=json`);
-    const data = await response.json();
+    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${search_text}&api_key=${search_api_key}&limit=${artists_amount}&format=json`)
+    .catch(() => {
+        alert("Failed to establish a connection with the server");
+    });
+    const data = await response.json().catch(() => {
+        alert("Failed to parse data from server");
+    });
     return data;
 }
 /**
@@ -205,8 +204,13 @@ async function fetch_artists_result(){
  */
 async function fetch_albums_result(){
     const albums_amount = 7;
-    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${search_text}&api_key=${api_key}&limit=${albums_amount}&format=json`);
-    const data = await response.json();
+    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=album.search&album=${search_text}&api_key=${search_api_key}&limit=${albums_amount}&format=json`)
+    .catch(() => {
+        alert("Failed to establish a connection with the server");
+    });
+    const data = await response.json().catch(() => {
+        alert("Failed to parse data from server");
+    });
     return data;
 }
 /**
@@ -216,8 +220,13 @@ async function fetch_albums_result(){
 async function fetch_tracks_result(){
     /*Ссылки на изображения приходящие по запросу по какой то причине указывают на серое изображение */
     const tracks_amount = 7;
-    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search_text}&api_key=${api_key}&limit=${tracks_amount}&format=json`);
-    const data = await response.json();
+    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.search&track=${search_text}&api_key=${search_api_key}&limit=${tracks_amount}&format=json`)
+    .catch(() => {
+        alert("Failed to establish a connection with the server");
+    });
+    const data = await response.json().catch(() => {
+        alert("Failed to parse data from server");
+    });
     return data;
 }
 /**
@@ -228,7 +237,7 @@ async function fetch_tracks_result(){
  * @param {string} artist_url 
  * @param {string} img_url 
  */
-function insert_data_artist(list, artist_name, listeners_amount, artist_url, img_url){
+function insert_data_artist(list, artist_name, listeners_amount, artist_url, img_url = "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.jpg"){
     list.insertAdjacentHTML("beforeend", create_image_artist_card(
                                     artist_name,
                                     listeners_amount,
@@ -245,7 +254,7 @@ function insert_data_artist(list, artist_name, listeners_amount, artist_url, img
  * @param {string} artist_url 
  * @param {string} img_url 
  */
-function insert_data_album(list, album_name, album_url, artist_name, artist_url, img_url){
+function insert_data_album(list, album_name, album_url, artist_name, artist_url, img_url = "https://lastfm.freetls.fastly.net/i/u/300x300/2a96cbd8b46e442fc41c2b86b821562f.jpg"){
     list.insertAdjacentHTML("beforeend", create_image_album_card(
                                             album_name,
                                             album_url,
@@ -263,7 +272,7 @@ function insert_data_album(list, album_name, album_url, artist_name, artist_url,
  * @param {string} author_url 
  * @param {string} img_url 
  */
-function insert_data_tracks(list, track_name, track_url, author_name, author_url, img_url){
+function insert_data_tracks(list, track_name, track_url, author_name, author_url, img_url = "https://lastfm.freetls.fastly.net/i/u/64s/4128a6eb29f94943c9d206c08e625904.jpg"){
     list.insertAdjacentHTML("beforeend", create_line_music_card(
                                             track_name,
                                             track_url,
