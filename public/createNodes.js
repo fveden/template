@@ -113,11 +113,7 @@ function create_link(text, url, ...classes){
 function create_genre_list_child(text, url){
     let list_child = document.createElement("li");
     list_child.classList.add("text-black", "card-genre-item");
-    
     let list_child_link = create_link(text, url, "text-black", "card-genre-item-link");
-    // list_child_link.classList.add("text-black", "card-genre-item-link");
-    // list_child_link.href = url;
-    // list_child_link.textContent = text;
     list_child.appendChild(list_child_link);
     return list_child;
 }

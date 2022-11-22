@@ -1,31 +1,56 @@
 const hotList = document.querySelector(".hot-list"); //Список популярных артистов
 const popularTracksList = document.querySelector(".popular-tracks-list"); //Список популярных треков
-sessionStorage.setItem("api_key", "687f75d4e98de92fbb1997c826992306"); //Задаем апи ключ
-const hot_api_key = sessionStorage.getItem("api_key"); //Апи ключ
-sessionStorage.setItem("search_text", ""); //Задаем поисковый запрос
-let data_hot_artists; //Список популярных артистов
-let data_hot_tracks; // Список популярных треков
-let artist_tags_datas = []; //Список объектов спиков тегов для популярных артистов
-let track_tags_datas = []; //Список объектов спиков тегов для популярных треков
+const hot_api_key = "687f75d4e98de92fbb1997c826992306"; //Апи ключ
+
 
 start_hot();
 /**
  * Входная функция для загрузки всех данных и отображения их
  */
 async function start_hot(){
-    await fetch_all_hot_data();
-    fill_hot_arctists();
-    fill_hot_tracks();
+    let fetchedData = await fetch_all_hot_data();
+    fill_hot_artists(fetchedData.data_hot_artists, fetchedData.artist_tags_datas);
+    fill_hot_tracks(fetchedData.data_hot_tracks, fetchedData.track_tags_datas);
 }
 /**
- * Функция извлечения списка популярных артистов
- * @returns {Object} Список артистов
+ * 
+ * @param {string} category Категория:
+ *  
+ * "Artists" : Информация о популярных артистах
+ * 
+ * "Tracks" : Информация о популярных треках
+ * 
+ * "ArtistTags" : Информация о популярных тегах артиста
+ * 
+ * "TrackTags" : Информация о популярных тегах трека
+ * 
+ * @param {number} [amount = 7] Количество объектов, не касается тегов
+ * @param {object} [target = null]  Целевой объект для извлечения информации о тегах
+ * @returns {object} Информация по запрашиваемой категории
  */
-async function fetch_hot_arctists(){
-    /*Ссылки на изображения приходящие по запросу по какой то причине указывают на серое изображение */
-    const artistsAmount = 7;
-    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${hot_api_key}&format=json&limit=${artistsAmount}`)
-    .catch(() => {
+async function fetch_data(category, amount = 7, target = null){
+    let requestString = ""
+    try{
+        switch(category){
+            case "Artists":
+                requestString = `http://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&api_key=${hot_api_key}&format=json&limit=${amount}`;
+                break;
+            case "Tracks":
+                requestString = `http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${hot_api_key}&format=json&limit=${amount}`;
+                break;
+            case "ArtistTags":
+                requestString = `http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=${target.name}&api_key=${hot_api_key}&format=json`;
+                break;
+            case "TrackTags":
+                requestString = `http://ws.audioscrobbler.com/2.0/?method=track.gettoptags&api_key=${hot_api_key}&artist=${target.artist.name}&track=${target.name}&autocorrect[1]&format=json`;
+                break;
+        }
+    }
+    catch{
+        alert("Failed to parse data");
+        return null;
+    }
+    const response = await fetch(requestString).catch(() => {
         alert("Failed to establish a connection with the server");
     });
     const data = await response.json().catch(() => {
@@ -33,79 +58,55 @@ async function fetch_hot_arctists(){
     });
     return data;
 }
-/**
- * Функция извлечения списка популярных треков
- * @returns {Object} Список треков
- */
-async function fetch_hot_tracks(){
-    /*Ссылки на изображения приходящие по запросу по какой то причине указывают на серое изображение */
-    const tracksAmount = 7;
-    const response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=${hot_api_key}&format=json&limit=${tracksAmount}`)
-    .catch(() => {
-        alert("Failed to establish a connection with the server");
-    });
-    const data = await response.json().catch(() => {
-        alert("Failed to parse data from server");
-    });
-    return data;
-}
+
 /**
  * Функция для сбора всей инофрмации
  */
 async function fetch_all_hot_data(){
-    await Promise.all([fetch_hot_arctists(), fetch_hot_tracks()]).then(
+    let data_hot_artists; //Список популярных артистов
+    let data_hot_tracks; // Список популярных треков
+    let artist_tags_datas = []; //Список объектов списков тегов для популярных артистов
+    let track_tags_datas = []; //Список объектов списков тегов для популярных треков
+    await Promise.all([fetch_data("Artists", 8), fetch_data("Tracks", 8)]).then(
         ([data1, data2]) => {
             data_hot_artists = data1;
             data_hot_tracks = data2;
         }
     )
-    const promises_artists_tags = data_hot_artists.artists.artist.map(fetch_artist_tags);
-    const promises_tracks_tags = data_hot_tracks.tracks.track.map(fetch_tracks_tags);
-    await Promise.all(promises_artists_tags.concat(promises_tracks_tags));
+    const promises_artists_tags = data_hot_artists.artists.artist.map((artist) => fetch_data("ArtistTags", undefined,target = artist));
+    const promises_tracks_tags = data_hot_tracks.tracks.track.map((track) => fetch_data("TrackTags", undefined, target = track));
+    await Promise.all([...promises_artists_tags, ...promises_tracks_tags]).then(
+        (data1 = []) => {
+            artist_tags_datas = data1.slice(0, promises_artists_tags.length);
+            track_tags_datas = data1.slice(promises_artists_tags.length, promises_artists_tags.length + promises_tracks_tags.length);
+        }
+    )
+    return {
+        data_hot_artists : data_hot_artists,
+        data_hot_tracks : data_hot_tracks,
+        artist_tags_datas : artist_tags_datas,
+        track_tags_datas : track_tags_datas
+    }
 }
 /**
- * Отображаем информацию об топе артистов
+ * Отображаем информацию о топе артистов
+ * @param {object} data_hot_artists Информация о популярных артистах
+ * @param {object[]} artist_tags_datas Объект списков тегов для популярных артистов
  */
-function fill_hot_arctists(){
+function fill_hot_artists(data_hot_artists, artist_tags_datas){
     for(let i = 0; i < data_hot_artists.artists.artist.length; i++){
         show_info_artist(data_hot_artists.artists.artist[i], artist_tags_datas[i])
     }
 }
 /**
- * Отображаем информацию об топе треков
+ * Отображаем информацию о топе треков
+ * @param {object} data_hot_tracks Информация о популярных треках
+ * @param {object[]} track_tags_datas Объект списков тегов для популярных треков
  */
-function fill_hot_tracks(){
+function fill_hot_tracks(data_hot_tracks, track_tags_datas){
     for(let i = 0; i < data_hot_tracks.tracks.track.length; i++){
         show_info_track(data_hot_tracks.tracks.track[i], track_tags_datas[i])
     }
-}
-/**
- * Функция извлечения данных о топе тегов артиста
- * @param {Object} artist Артист
- */
-async function fetch_artist_tags(artist){
-    const artist_tags_response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=artist.gettoptags&artist=${artist.name}&api_key=${hot_api_key}&format=json`)
-    .catch(() => {
-        alert("Failed to establish a connection with the server");
-    });
-    const artist_tags_data = await artist_tags_response.json().catch(() => {
-        alert("Failed to parse data from server");
-    });
-    artist_tags_datas.push(artist_tags_data);
-}
-/**
- * Функция извлечения данных о топе тегов трека
- * @param {Object} track Трек 
- */
-async function fetch_tracks_tags(track){
-    const track_tags_response = await fetch(`http://ws.audioscrobbler.com/2.0/?method=track.gettoptags&api_key=${hot_api_key}&artist=${track.artist.name}&track=${track.name}&autocorrect[1]&format=json`)
-    .catch(() => {
-        alert("Failed to establish a connection with the server");
-    });
-    const track_tags_data = await track_tags_response.json().catch(() => {
-        alert("Failed to parse data from server");
-    });
-    track_tags_datas.push(track_tags_data);
 }
 
 /**
